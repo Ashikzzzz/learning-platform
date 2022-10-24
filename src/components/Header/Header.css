@@ -1,0 +1,13 @@
+.myNav a{
+    border: 1px solid cadetblue;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    margin-left: 5px;
+    padding: 7px 10px;
+}
+.myNav a:hover{
+    background-color: cornflowerblue;
+    color: black;
+}
