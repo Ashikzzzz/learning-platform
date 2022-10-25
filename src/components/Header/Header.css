@@ -11,3 +11,9 @@
     background-color: cornflowerblue;
     color: black;
 }
+
+.title a{
+    text-decoration: none;
+    color: gray;
+    margin-left: 5px;
+}
