@@ -1,5 +1,7 @@
 import Blog from "../components/Blog/Blog";
+// import Category from "../components/Category/Category";
 import Courses from "../components/Courses/Courses";
+import Details from "../components/Details/Details";
 
 import Home from "../components/Home/Home";
 import Question from "../components/Question/Question";
@@ -20,6 +22,18 @@ export const routes = createBrowserRouter([
         path: "Courses",
         element: <Courses></Courses>,
         loader: () => fetch("http://localhost:5000/course"),
+      },
+      {
+        path: "/category/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.id}`),
+      },
+      {
+        path: "/course/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/${params.id}`),
       },
       {
         path: "/question",

@@ -1,12 +1,20 @@
 import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
+import LeftPart from "../components/LeftPart/LeftPart";
 
 const Main = () => {
   return (
     <div>
       <Header></Header>
-      <Outlet></Outlet>
+      <Container>
+        <Row>
+          <Col>
+            <Outlet></Outlet>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

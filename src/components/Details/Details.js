@@ -1,15 +1,16 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { useLoaderData } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { FaEye, FaStar, IconName } from "react-icons/fa";
-import "./Course.css";
 
-const Course = ({ course }) => {
-  const { about, name, picture, rating, _id, view } = course;
-  //   console.log(course);
+const Details = () => {
+  const details = useLoaderData();
+  const { about, name, picture, rating, _id, view } = details;
+  console.log(details);
+
   return (
-    <div className="card-main mb-5">
+    <div>
       <Card className="text-center">
         <Card.Body>
           <Card.Title>{name}</Card.Title>
@@ -40,4 +41,4 @@ const Course = ({ course }) => {
   );
 };
 
-export default Course;
+export default Details;
