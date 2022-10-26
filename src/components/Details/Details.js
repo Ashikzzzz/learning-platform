@@ -1,7 +1,7 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-
+import "./Details.css";
 import { FaEye, FaStar, IconName } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,12 +10,18 @@ import { Button } from "react-bootstrap";
 
 const Details = () => {
   const details = useLoaderData();
-  const { about, name, picture, rating, _id, view } = details;
+  const {
+    about,
+    name,
+    picture,
+    rating,
+    _id,
+    view,
+    category_id,
+    duration,
+    price,
+  } = details;
   //   console.log(details);
-
-  const handleBuyNow = () => {
-    toast("Congratulation! You enrolled fro this course");
-  };
 
   return (
     <div>
@@ -24,11 +30,12 @@ const Details = () => {
           <Card.Title>{name}</Card.Title>
           <Card.Img className="picture-card" variant="top" src={picture} />
           <Card.Text className="mt-5">{about}</Card.Text>
+          <h6>Price: {price}</h6>
+          <p>Duration: {duration}</p>
           <p className="text-warning">Want to hire this course?</p>
-          <Button onClick={handleBuyNow} variant="outline-success">
-            Enroll Now
+          <Button className="enroll" variant="outline-success">
+            <Link to={`/chackout/${category_id}`}>Enroll Now</Link>
           </Button>{" "}
-          <ToastContainer />
         </Card.Body>
         <Card.Footer className="text-muted">
           <div className="d-flex justify-content-around align-items-center">

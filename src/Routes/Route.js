@@ -1,4 +1,5 @@
 import Blog from "../components/Blog/Blog";
+import ChackOut from "../components/ChackOut/ChackOut";
 // import Category from "../components/Category/Category";
 import Courses from "../components/Courses/Courses";
 import Details from "../components/Details/Details";
@@ -6,6 +7,7 @@ import Details from "../components/Details/Details";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Question from "../components/Question/Question";
+import Register from "../components/Register/Register";
 import Main from "../screen/Main";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -41,12 +43,22 @@ export const routes = createBrowserRouter([
         element: <Question></Question>,
       },
       {
+        path: "/chackout/:id",
+        element: <ChackOut></ChackOut>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.id}`),
+      },
+      {
         path: "/blog",
         element: <Blog></Blog>,
       },
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

@@ -1,15 +1,24 @@
 import React from "react";
 import { useContext } from "react";
+import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/Photo-studio.png";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  // signout control
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -27,11 +36,42 @@ const Header = () => {
               <Link to="/question">FAQ</Link>
               <Link to="/blog">Blog</Link>
             </Nav>
-            <Nav className="myNav">
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Link to="/login">Login</Link>
+            <Nav>
+              <Nav.Link href="#deets">
+                {user?.uid ? (
+                  <>
+                    <span> {user?.displayName}</span>
+                    <Button
+                      onClick={handleSignOut}
+                      className="ms-2"
+                      variant="secondary"
+                      size="sm"
+                    >
+                      Log Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button className="yourNav me-2" variant="outline-primary">
+                      <Link to="/login">Login</Link>
+                    </Button>
+                    <Button className="yourNav" variant="outline-primary">
+                      <Link to="/register">Register</Link>
+                    </Button>
+                  </>
+                )}
+              </Nav.Link>
+
               <Nav.Link eventKey={2} href="#memes">
-                {user.displayName}
+                {user?.photoURL ? (
+                  <Image
+                    style={{ height: "40px" }}
+                    roundedCircle
+                    src={user.photoURL}
+                  ></Image>
+                ) : (
+                  <FaUser></FaUser>
+                )}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

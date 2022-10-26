@@ -11,6 +11,10 @@
     background-color: cornflowerblue;
     color: black;
 }
+.yourNav a{
+    text-decoration: none;
+    color: white;
+}
 
 .title a{
     text-decoration: none;
