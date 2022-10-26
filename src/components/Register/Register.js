@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
@@ -55,6 +56,9 @@ const Register = () => {
       <Button variant="primary" type="submit">
         Sign Up
       </Button>
+      <p>
+        Already have an Account?<Link to="/login">LogIn</Link>First{" "}
+      </p>
     </Form>
   );
 };

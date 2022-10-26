@@ -1,17 +1,21 @@
 import React from "react";
+
 import { useContext } from "react";
 import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaUser } from "react-icons/fa";
+import { FaToggleOff, FaToggleOn, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 import logo from "../../assets/logo/Photo-studio.png";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+
 import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+
   // signout control
   const handleSignOut = () => {
     logOut()
@@ -76,6 +80,9 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <div>
+          <FaToggleOn></FaToggleOn>
+        </div>
       </Navbar>
     </div>
   );

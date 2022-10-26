@@ -4,7 +4,7 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
@@ -82,6 +82,9 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
+        <p>
+          You need to <Link to="/register"> Register</Link>First{" "}
+        </p>
         <p className="text-danger"> {error}</p>
       </form>
       <Button
