@@ -14,7 +14,7 @@ const Details = () => {
   //   console.log(details);
 
   const handleBuyNow = () => {
-    toast("Congratulation! You are Buying this course");
+    toast("Congratulation! You enrolled fro this course");
   };
 
   return (
@@ -24,8 +24,9 @@ const Details = () => {
           <Card.Title>{name}</Card.Title>
           <Card.Img className="picture-card" variant="top" src={picture} />
           <Card.Text className="mt-5">{about}</Card.Text>
+          <p className="text-warning">Want to hire this course?</p>
           <Button onClick={handleBuyNow} variant="outline-success">
-            Buy Now
+            Enroll Now
           </Button>{" "}
           <ToastContainer />
         </Card.Body>
