@@ -1,8 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
+  // use context
+  const { createUser } = useContext(AuthContext);
+
   // register controll
   const handleSubmitRegister = (event) => {
     event.preventDefault();
@@ -11,11 +16,18 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoURL, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
-    <form onSubmit={handleSubmitRegister} className="w-50 mt-5">
+    <Form onSubmit={handleSubmitRegister} className="w-50 mt-5">
       <Form.Group className="mb-5" controlId="formBasicEmail">
         <Form.Control name="name" type="text" placeholder="Your Name" />
       </Form.Group>
@@ -43,7 +55,7 @@ const Register = () => {
       <Button variant="primary" type="submit">
         Sign Up
       </Button>
-    </form>
+    </Form>
   );
 };
 

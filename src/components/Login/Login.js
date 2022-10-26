@@ -1,12 +1,32 @@
 import React from "react";
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
+  // context use
+  const { signIn } = useContext(AuthContext);
+
+  // login controll
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
-      <Form className="w-50 mt-5">
+      <form onSubmit={handleLogin} className="w-50 mt-5">
         <Form.Group className="mb-5" controlId="formBasicEmail">
           <Form.Control
             name="email"
@@ -30,7 +50,7 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
-      </Form>
+      </form>
     </div>
   );
 };
