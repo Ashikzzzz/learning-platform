@@ -23,6 +23,10 @@ const Details = () => {
   } = details;
   //   console.log(details);
 
+  const handleEnroll = () => {
+    toast("congratulation!! you are enrolled for this course");
+  };
+
   return (
     <div>
       <Card className="text-center">
@@ -33,10 +37,19 @@ const Details = () => {
           <h6>Price: {price}</h6>
           <p>Duration: {duration}</p>
           <p className="text-warning">Want to hire this course?</p>
-          <Button className="enroll" variant="outline-success">
-            <Link to={`/chackout/${category_id}`}>Enroll Now</Link>
-          </Button>{" "}
+          <div className="d-flex justify-content-evenly align-items-center">
+            <Button onClick={handleEnroll} variant="outline-success">
+              Enroll Now
+            </Button>{" "}
+            <ToastContainer></ToastContainer>
+            <Button className="enroll" variant="outline-success">
+              <Link>
+                <Link to={`/chackout/${category_id}`}>Get premium access</Link>
+              </Link>
+            </Button>{" "}
+          </div>
         </Card.Body>
+
         <Card.Footer className="text-muted">
           <div className="d-flex justify-content-around align-items-center">
             <div>

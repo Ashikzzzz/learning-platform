@@ -8,16 +8,27 @@ import { Button, Col, Row } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Home = () => {
   // using context
-  const { googleProvider } = useContext(AuthContext);
+  const { googleProvider, gitProvider } = useContext(AuthContext);
   const googleNewProvider = new GoogleAuthProvider();
+  const gitNewProvider = new GithubAuthProvider();
 
   // google login
   const handleGoogleLogin = () => {
     googleProvider(googleNewProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // gitHub login
+  const handleGitLogin = () => {
+    gitProvider(gitNewProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -38,6 +49,7 @@ const Home = () => {
             <FaGoogle className="me-2"></FaGoogle> Sign In With Google
           </Button>
           <Button
+            onClick={handleGitLogin}
             className="d-flex mt-3  align-items-center"
             variant="success"
             size="lg"

@@ -1,11 +1,15 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   // context use
   const { signIn } = useContext(AuthContext);
 
@@ -20,8 +24,9 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate("/");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.messege));
   };
 
   return (
@@ -50,6 +55,7 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
+        <p className="text-danger"> {error}</p>
       </form>
     </div>
   );
