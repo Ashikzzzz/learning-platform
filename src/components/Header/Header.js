@@ -37,7 +37,7 @@ const Header = () => {
               <Link to="/blog">Blog</Link>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">
+              <Nav.Link>
                 {user?.uid ? (
                   <>
                     <span> {user?.displayName}</span>

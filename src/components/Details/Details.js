@@ -42,10 +42,8 @@ const Details = () => {
               Enroll Now
             </Button>{" "}
             <ToastContainer></ToastContainer>
-            <Button className="enroll" variant="outline-success">
-              <Link>
-                <Link to={`/chackout/${category_id}`}>Get premium access</Link>
-              </Link>
+            <Button className="enroll" variant="outline-dark">
+              <Link to={`/chackout/${category_id}`}>Get premium access</Link>
             </Button>{" "}
           </div>
         </Card.Body>

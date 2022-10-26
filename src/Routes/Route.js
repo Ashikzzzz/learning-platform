@@ -6,6 +6,7 @@ import Details from "../components/Details/Details";
 
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Question from "../components/Question/Question";
 import Register from "../components/Register/Register";
 import Main from "../screen/Main";
@@ -44,7 +45,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/chackout/:id",
-        element: <ChackOut></ChackOut>,
+        element: (
+          <PrivateRoute>
+            <ChackOut></ChackOut>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/category/${params.id}`),
       },

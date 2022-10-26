@@ -4,14 +4,21 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   // context use
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleProvider, gitProvider } = useContext(AuthContext);
+
+  const googleNewProvider = new GoogleAuthProvider();
+  const gitNewProvider = new GithubAuthProvider();
 
   // login controll
   const handleLogin = (event) => {
@@ -24,14 +31,34 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
-        navigate("/");
+        setError("");
+        navigate(from, { replace: true });
       })
-      .catch((error) => setError(error.messege));
+      .catch((error) => setError("Password is wrong"));
+  };
+
+  const handleGoogleLogin = () => {
+    googleProvider(googleNewProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // gitHub login
+  const handleGitLogin = () => {
+    gitProvider(gitNewProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
     <div>
-      <form onSubmit={handleLogin} className="w-50 mt-5">
+      <form onSubmit={handleLogin} className="w-50 mx-auto mt-5">
         <Form.Group className="mb-5" controlId="formBasicEmail">
           <Form.Control
             name="email"
@@ -57,6 +84,22 @@ const Login = () => {
         </Button>
         <p className="text-danger"> {error}</p>
       </form>
+      <Button
+        onClick={handleGoogleLogin}
+        className="d-flex mt-3 align-items-center mx-auto"
+        variant="dark"
+        size="lg"
+      >
+        <FaGoogle className="me-2"></FaGoogle> Sign In With Google
+      </Button>
+      <Button
+        onClick={handleGitLogin}
+        className="d-flex mt-3 mx-auto align-items-center"
+        variant="success"
+        size="lg"
+      >
+        <FaGithub className="me-2"></FaGithub> Sign In With GitHub
+      </Button>
     </div>
   );
 };
