@@ -8,7 +8,7 @@ const LeftPart = () => {
   console.log(categories);
 
   useEffect(() => {
-    fetch("http://localhost:5000/category")
+    fetch("https://code-buzz-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => setCategoris(data));
   }, []);

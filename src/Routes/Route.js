@@ -24,21 +24,21 @@ export const routes = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "Courses",
+        path: "/courses",
         element: <Courses></Courses>,
-        loader: () => fetch("http://localhost:5000/course"),
+        loader: () => fetch("https://code-buzz-server.vercel.app/course"),
       },
       {
         path: "/category/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://code-buzz-server.vercel.app/category/${params.id}`),
       },
       {
         path: "/course/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(`https://code-buzz-server.vercel.app/category/${params.id}`),
       },
       {
         path: "/question",
@@ -52,7 +52,7 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://code-buzz-server.vercel.app/category/${params.id}`),
       },
       {
         path: "/blog",
@@ -67,7 +67,7 @@ export const routes = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/*",
+        path: "*",
         element: <NotFound></NotFound>,
       },
     ],
