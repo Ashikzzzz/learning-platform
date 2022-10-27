@@ -25,7 +25,13 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar
+        className="main"
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+      >
         <Container>
           <Navbar.Brand>
             <div className="d-flex justify-content-center title  align-item-center">
@@ -69,9 +75,10 @@ const Header = () => {
               <Nav.Link eventKey={2} href="#memes">
                 {user?.photoURL ? (
                   <Image
+                    title={user?.displayName}
                     style={{ height: "40px" }}
                     roundedCircle
-                    src={user.photoURL}
+                    src={user?.photoURL}
                   ></Image>
                 ) : (
                   <FaUser></FaUser>
@@ -80,8 +87,9 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <div>
-          <FaToggleOn></FaToggleOn>
+        <div className="d-flex">
+          <FaToggleOff className="text-light"></FaToggleOff>
+          <FaToggleOn className="text-light"></FaToggleOn>
         </div>
       </Navbar>
     </div>

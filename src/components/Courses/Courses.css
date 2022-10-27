@@ -1,4 +1,7 @@
-.card-main{
+/* .card-main{
     display: grid;
     grid-template-columns: repeat(1, 2fr);
+} */
+.courseShadow{
+    box-shadow: 4px 4px 8px white;
 }

@@ -1,11 +1,19 @@
 .App {
   text-align: center;
-  /* background-color: #435669; */
+ 
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+#light{
+  background-color: wheat;
+}
+
+#dark{
+  background-color: #282c34;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -24,6 +32,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
 
 .App-link {
   color: #61dafb;

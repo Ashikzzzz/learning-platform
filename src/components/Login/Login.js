@@ -36,7 +36,7 @@ const Login = () => {
       })
       .catch((error) => setError("Password is wrong"));
   };
-
+  // google login
   const handleGoogleLogin = () => {
     googleProvider(googleNewProvider)
       .then((result) => {

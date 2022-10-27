@@ -1,6 +1,5 @@
 .card-main{
-    display: grid;
-    grid-template-columns: repeat(1, 2fr);
+    box-shadow: 4px 4px 8px white;
 }
 .picture-card{
     height: 400px;
