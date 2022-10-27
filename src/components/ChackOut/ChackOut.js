@@ -17,6 +17,7 @@ const ChackOut = () => {
 
     duration,
   } = allChackOut;
+  console.log(allChackOut);
   return (
     <div ref={ref} className="print">
       <h4>Congratulations!! You are Enroll for this course</h4>

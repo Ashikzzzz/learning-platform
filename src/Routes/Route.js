@@ -38,7 +38,7 @@ export const routes = createBrowserRouter([
         path: "/course/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`https://code-buzz-server.vercel.app/category/${params.id}`),
+          fetch(`https://code-buzz-server.vercel.app/details/${params.id}`),
       },
       {
         path: "/question",
@@ -52,7 +52,7 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://code-buzz-server.vercel.app/category/${params.id}`),
+          fetch(`https://code-buzz-server.vercel.app/details/${params.id}`),
       },
       {
         path: "/blog",
