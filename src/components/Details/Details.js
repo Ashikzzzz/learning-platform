@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import "./Details.css";
-import { FaEye, FaStar, IconName } from "react-icons/fa";
+import { FaEye, FaStar } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 

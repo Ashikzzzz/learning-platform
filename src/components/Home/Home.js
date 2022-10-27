@@ -4,7 +4,6 @@ import Carousel from "react-bootstrap/Carousel";
 import p1 from "../../assets/image/p1.jpeg";
 import p2 from "../../assets/image/p2.jpg";
 import p3 from "../../assets/image/p3.jpeg";
-import { Button, Col, Row } from "react-bootstrap";
 
 const Home = () => {
   // using context

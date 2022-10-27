@@ -5,9 +5,10 @@ import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaToggleOff, FaToggleOn, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import "antd/dist/antd.css";
+import { Switch } from "antd";
 import logo from "../../assets/logo/Photo-studio.png";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
@@ -45,6 +46,7 @@ const Header = () => {
               <Link to="/Courses">Courses</Link>
               <Link to="/question">FAQ</Link>
               <Link to="/blog">Blog</Link>
+              <Switch className="ms-2 align-items-center"></Switch>
             </Nav>
             <Nav>
               <Nav.Link>
@@ -73,7 +75,7 @@ const Header = () => {
               </Nav.Link>
 
               <Nav.Link eventKey={2} href="#memes">
-                {user?.photoURL ? (
+                {user?.uid || user?.email?.photoURL ? (
                   <Image
                     title={user?.displayName}
                     style={{ height: "40px" }}
@@ -87,10 +89,6 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <div className="d-flex">
-          <FaToggleOff className="text-light"></FaToggleOff>
-          <FaToggleOn className="text-light"></FaToggleOn>
-        </div>
       </Navbar>
     </div>
   );

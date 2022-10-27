@@ -24,7 +24,7 @@ const ChackOut = () => {
       <Card className="text-center">
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Img className="picture-card" variant="top" src={picture} />
+          <Card.Img className="picture-cart" variant="top" src={picture} />
           <p>Duration: {duration}</p>
           <h3>Have Fun And Stay Safe</h3>
           <ReactPrint
